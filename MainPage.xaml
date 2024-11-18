@@ -1,0 +1,60 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MauiAppCadastroEventos.Models"
+             x:Class="MauiAppCadastroEventos.MainPage"
+             BackgroundColor="WhiteSmoke">
+             
+
+    <ContentPage.BindingContext>
+        <models:Evento />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Cadastro de Evento" FontSize="30" HorizontalOptions="Center" 
+               TextColor="{StaticResource Primary}"/>
+
+        <!-- Entrada para o nome do evento -->
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="Nome do evento:  " VerticalOptions="Center" FontSize="16" />
+                <Entry Text="{Binding Nome}" Placeholder="Digite aqui" FontSize="18" />
+                </VerticalStackLayout>
+        </Frame>
+
+
+        <!-- Linha para Data de Início -->
+        <Frame>
+        <VerticalStackLayout>
+            <HorizontalStackLayout>
+            <Label Text="Início:  " VerticalOptions="Center" FontSize="16" />
+            <DatePicker Date="{Binding DataInicio}" FontSize="16" HorizontalOptions="StartAndExpand" />
+        </HorizontalStackLayout>
+
+            <!-- Linha para Data de Fim -->
+        <HorizontalStackLayout>
+            <Label Text="Fim:  " VerticalOptions="Center" FontSize="16" />
+            <DatePicker Date="{Binding DataFim, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" HorizontalOptions="StartAndExpand"/>
+        </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame>
+            <VerticalStackLayout>
+            <!-- Entrada para o número de participantes -->
+        <HorizontalStackLayout>
+            <Label Text="Número de Participantes:" VerticalOptions="Center" FontSize="16" />
+            <Entry Text="{Binding NumeroParticipantes}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" />
+        </HorizontalStackLayout>
+
+        <!-- Entrada para o custo por participante -->
+        <HorizontalStackLayout>
+            <Label Text="Custo por participante:" VerticalOptions="Center" FontSize="16" />
+            <Entry Text="{Binding CustoPorParticipante}" Placeholder="R$"/>
+        </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+
+        <Button Text="Salvar" Clicked="OnSalvarClicked" />
+    </VerticalStackLayout>
+</ContentPage>
